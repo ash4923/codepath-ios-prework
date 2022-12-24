@@ -22,12 +22,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func introduceSelfDidTapped(_ sender: UIButton) {
-        let year = yearSegmentedControl.titleForSegment(at: yearSegmentedControl.selectedSegmentIndex)
+        var year = yearSegmentedControl.titleForSegment(at: yearSegmentedControl.selectedSegmentIndex)
+        
+        switch year {
+        case "Second":
+            year = "sophomore"
+        case "Third":
+            year = "junior"
+        case "Fourth":
+            year = "senior"
+        default:
+            year = "freshman"
+        }
                
         // variable of type string that holds the introduction
         let introduction = "My name is \(firstNameTextField.text!) \(lastNameTextField.text!) and I attend \(schoolNameTextField.text!). I am currently in my \(year!) year and I own \(numberOfPetsLabel.text!) pets. It is \(morePetsSwitch.isOn) that I want more pets."
-                
-        //print(introduction)
         
         // Creates the alert where we pass in our message, which our introduction.
         let alertController = UIAlertController(title: "My Introduction", message: introduction, preferredStyle: .alert)
